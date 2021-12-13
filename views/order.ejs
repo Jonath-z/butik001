@@ -9,11 +9,11 @@
 
         <div class="row">
         <div class="col col-lg-12 col-sm-12">
-            <div class="card-order h-100 shadow-sm"> <img src="https://firebasestorage.googleapis.com/v0/b/butik004.appspot.com/o/butik%2Fimage_1624724848249?alt=media&token=3636e074-daa7-4291-9f96-8581e775ee99 " class="card-img-top" alt="jordan">
+            <div class="card-order h-100 shadow-sm"> <img src=<%- `${product.image}` %>  class="card-img-top" alt="jordan">
                 <div class="card-body">
-                    <div class="clearfix mb-3"><span class="float-start badge rounded-pill bg-success">$34.98</span></div>
-                    <h5 class="card-title">Air Force 1</h5>
-                    <p class="size">size: 40-44</p>
+                    <div class="clearfix mb-3"><span class="float-start badge rounded-pill bg-success">$<%- product.price %> </span></div>
+                    <h5 class="card-title"><%- product.model %> </h5>
+                    <p class="size">size: <%- product.size %> </p>
                 </div>
             </div>
         
@@ -22,45 +22,55 @@
 
 
         <!-- ====item=== -->
-      <form class=" col-sm-10 col-lg-12" >
+      <form class=" col-sm-10 col-lg-12" method="post" action="/command">
         <div class="form-group row">
           <label class="col-form-label col-sm-4 col-md-3 col-lg-2" for="user-name">Name</label>
           <div class="input-group col-sm-8 col-md-9 col-lg-10">
-            <input type="text" class="form-control" id="user-name" placeholder="your name..">
+            <input type="text" class="form-control" id="user-name" name="name" placeholder="your name..">
           </div>
         </div>
         
         <div class="form-group row">
           <label class="control-label col-sm-4 col-md-3 col-lg-2" for="user-surname">Last name</label>
           <div class="input-group col-sm-8 col-md-9 col-lg-10">
-
-            <input type="text" class="form-control" id="user-surname" placeholder="last name...">
+            <input type="text" class="form-control" id="user-surname" name="lastName" placeholder="last name...">
           </div>
         </div>
-        
+        <!-- command meta data  -->
+        <div class="form-group row" hidden>
+          <div class="input-group col-sm-8 col-md-9 col-lg-10">
+            <input type="text" class="form-control" id="url" name="url" value='<%- product.image %> '  hidden>
+            <input type="text" class="form-control" id="price" name="price" value='<%- product.price %> '  hidden>
+            <input type="text" class="form-control" id="type" name="type" value='<%- product.type %> '  hidden>
+          </div>
+        </div>
+
         <div class="form-group row">
           <label class="control-label col-sm-4 col-md-3 col-lg-2" for="email">E-mail</label>
           <div class="input-group col-sm-8 col-md-9 col-lg-10">
-           
-            <input type="email" class="form-control" id="email" placeholder="E-mail address">
+            <input type="email" class="form-control" id="email" name="email" placeholder="E-mail address">
           </div>
         </div>
-
-        
+        <div class="form-group row">
+          <label class="control-label col-sm-4 col-md-3 col-lg-2" for="size">Size</label>
+          <div class="input-group col-sm-8 col-md-9 col-lg-10">
+            <input type="number" class="form-control" id="size" name="size" placeholder="size">
+          </div>
+        </div>
         <div class="form-group row">
             <label class="control-label col-sm-4 col-md-3 col-lg-2" for="email">Counry</label>
             <div class="input-group col-sm-8 col-md-9 col-lg-10">
              
                 <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="congo" checked >
+                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="congo" value="Congo" checked >
                     <label class="form-check-label" for="congo">
                       DRC Congo
                     </label><br>
-                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="rwanda"  >
+                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="rwanda" value="Rwanda" >
                     <label class="form-check-label" for="rwanda">
                       Rwanda
                     </label><br>
-                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="burundi"  >
+                    <input class="form-check-input" type="radio" name="flexRadioDisabled" id="burundi" value="Burundi" >
                     <label class="form-check-label" for="burundi">
                       Burundi
                     </label>
@@ -70,23 +80,20 @@
         <div class="form-group row">
           <label class="control-label col-sm-4 col-md-3 col-lg-2" for="number">Phone </label>
           <div class="input-group col-sm-8 col-md-9 col-lg-10">
-
-            <input type="tel" class="form-control" id="number" placeholder="+250...">
+            <input type="tel" class="form-control" id="number" name="number" placeholder="+250...">
           </div>
         </div>
  
         <br>    
 
-        <button style="margin-left: 25px;"  type="submit" class="btn btn-warning"> Send
+        <button style="margin-left: 25px;"  type="submit" class="btn btn-warning" id="submitButton"> Send
             <i class="fa fa-paper-plane"></i></button>
         <br>
         <br>
         <br>
+        </div>
 
-    </form>
-
-    </div>    
+      </form>    
     
         <!-----------footer here  -->
-
         <%- include("partials/footer"); -%>
