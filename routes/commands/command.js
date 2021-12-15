@@ -25,7 +25,7 @@ route.post("/", async (req, res) => {
     });
     //______________ send mail with defined transport object_________________//
     transporter.sendMail({
-        from: `"Butik" <${process.env.EMAIL_USER}>`, // sender address
+        from: `"Butik004" <${process.env.EMAIL_USER}>`, // sender address
         to: [`"${req.body.email}"`, `${process.env.ADMIN_MAIL}`], // list of receivers
         subject: "Command's confirmation", // Subject line
         html: `<p>Dear ${req.body.name} ${req.body.lastName};<br>
