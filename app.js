@@ -1,6 +1,7 @@
 //jshint esversion:6
 const express = require("express");
 const ejs = require("ejs");
+const path = require('path');
 const home = require('./routes/home');
 const about = require('./routes/about');
 const contact = require('./routes/contact');
@@ -14,6 +15,7 @@ const command = require('./routes/commands/command');
 const app = express();
 
 app.use(express.json());
+app.use('/statics', express.static(path.join(__dirname, './public/css')));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use('/', home);
